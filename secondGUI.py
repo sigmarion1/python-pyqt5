@@ -13,6 +13,9 @@ class MainDialog(QDialog):
         QDialog.__init__(self, None)
         uic.loadUi(CalUI, self)
 
+        self.num_pushButton_1.clicked.connect(self.NumClicked)
+        
+
 
 app = QApplication(sys.argv)
 main_dialog = MainDialog()
