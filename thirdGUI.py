@@ -1,9 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
+from PyQt5.QtWidgets import (QApplication, QWidget, QGridLayout, QLabel, QComboBox)
 # from PyQt5.QtGui import QIcon
-from
 
-class App(QMainWindow):
+class App(QWidget):
 
     def __init__(self):
         super().__init__()
@@ -15,10 +14,18 @@ class App(QMainWindow):
         self.initUI()
 
     def initUI(self):
+
+
+        self.lb1 = QLabel('Option1', self)
+
+
+        grid = QGridLayout()
+        self.setLayout(grid)
+
+        grid.addWidget(self.lb1, 0, 0)
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
-        # self.statusBar().showMessage('Message in statusbar.')
-        self.show()
+        self.show(self)
 
 
 
