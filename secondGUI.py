@@ -13,7 +13,7 @@ class MainDialog(QDialog):
         QDialog.__init__(self, None)
         uic.loadUi(CalUI, self)
 
-        self.num_pushButton_1.clicked.connect(self.NumClicked)
+        # self.num_pushButton1.clicked.connect(self.NumClicked)
         
 
 
