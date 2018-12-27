@@ -13,7 +13,7 @@ class MyWindow(QMainWindow):
         self.frame.setObjectName("nf")
         self.frame.setStyleSheet("""
             QFrame#nf{
-            background-image: url(./logobig.png);
+            background-image: url(./classroom.png);
             }
         """)
 

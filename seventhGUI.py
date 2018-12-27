@@ -1,8 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-from PyQt5.QtWidgets import QFrame
-
+# from PyQt5.QtWidgets import QFrame
 
 class MyWindow(QWidget):
     def __init__(self):
@@ -10,44 +9,55 @@ class MyWindow(QWidget):
 
         self.setGeometry(800, 200, 500, 300)
 
+        self.principalLayout = QHBoxLayout(self)
 
-        self.frame = QFrame()
-        self.frame.resize(300,300)
-        self.frame.setObjectName("nf")
-        self.frame.setStyleSheet("""
-            QFrame#nf{
-            background-image: url(./logobig.png);
+        self.leftFrame = QFrame(self)
+        self.leftFrame.setObjectName("lf")
+        self.leftFrame.setStyleSheet("""
+            QFrame#lf{
+            background-image: url(./classroom.png);
             }
         """)
 
-        self.lb1 = QLabel("11")
-        self.lb2 = QLabel("22")
-        self.lb3 = QLabel("33")
-
-        self.layout = QHBoxLayout()
-        self.leftLay = QVBoxLayout()
-        self.rightLay = QVBoxLayout()
-
-
-        self.leftLay.addWidget(self.lb1)
-        self.leftLay.addWidget(self.lb2)
-        # self.leftLay.addWidget(self.frame)
-        self.rightLay.addWidget(self.lb3)
-        # self.setCentralWidget(self.frame)
-
-        self.frame.setLayout(self.leftLay)
-
-
-        self.lb1 = QLabel("11")
-        self.lb2 = QLabel("22")
-        self.lb3 = QLabel("33")
+        self.verticalLayoutL = QVBoxLayout(self.leftFrame)
+        self.gridLayout = QGridLayout()
 
 
 
-        self.layout.addLayout(self.leftLay)
-        self.layout.addLayout(self.rightLay)
+        btn = QPushButton(self.leftFrame)
+        btn.setText("11")
+        self.gridLayout.addWidget(btn, 1, 1)
 
-        self.setLayout(self.layout)
+        btn = QPushButton(self.leftFrame)
+        btn.setText("22")
+        self.gridLayout.addWidget(btn, 2, 2)
+
+        self.verticalLayoutL.addLayout(self.gridLayout)
+        self.principalLayout.addWidget(self.leftFrame)
+
+        self.verticalLayoutR = QVBoxLayout()
+        self.gridLayout = QGridLayout()
+
+        lb = QLabel()
+        lb.setText("남학생 수 입력")
+        self.gridLayout.addWidget(lb, 0, 0)
+
+        le = QLineEdit()
+        self.gridLayout.addWidget(le, 0, 1)
+
+        lb = QLabel()
+        lb.setText("여학생 수 입력")
+        self.gridLayout.addWidget(lb, 1, 0)
+
+        le = QLineEdit()
+        self.gridLayout.addWidget(le, 1, 1)
+
+        self.verticalLayoutR.addLayout(self.gridLayout)
+        self.principalLayout.addLayout(self.verticalLayoutR)
+
+
+
+
 
 
 if __name__ == "__main__":
