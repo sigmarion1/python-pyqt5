@@ -11,7 +11,7 @@ class MyWindow(QWidget):
 
         self.setWindowTitle("GUI Test")
 
-        self.setGeometry(800, 200, 500, 300)
+        self.setGeometry(800, 200, 800, 500)
         # self.setFixedSize(500, 300)
 
         self.principalLayout = QHBoxLayout(self)
@@ -29,11 +29,11 @@ class MyWindow(QWidget):
         self.gridLayout = QGridLayout()
 
 
-        # self.gridLayout.setColumnStretch(0,1)
-        # self.gridLayout.setColumnStretch(6,1)
-        #
-        # self.gridLayout.setRowStretch(0,1)
-        # self.gridLayout.setRowStretch(7,1)
+        self.gridLayout.setColumnStretch(0,1)
+        self.gridLayout.setColumnStretch(6,1)
+
+        self.gridLayout.setRowStretch(0,1)
+        self.gridLayout.setRowStretch(7,1)
 
 
         self.lbArray = list()
@@ -43,20 +43,28 @@ class MyWindow(QWidget):
                 self.lb = QLabel(self)
                 self.lbArray.append(self.lb)
                 self.lb.setText(str(i*5 + j))
+                self.lb.setStyleSheet("""
+                    background-color: skyblue;
+                    color: white;
+                    font : 50px;
+                    text-align: center;
+                    border: 3px solid green;
+                """)
+
                 self.gridLayout.addWidget(self.lb, i+1, j+1)
 
-        for i in range(6):
-            for j in range(5):
-                self.lbArray[i*5+j].setText('hi')
-                # lbArray[i * 5 + j].setStyleSheet("""
-                #     background-color: yellow;
-                #     font: bold 40px;
-                #     """)
+        # for i in range(6):
+        #     for j in range(5):
+        #         self.lbArray[i*5+j].setText('hi')
+        #         # lbArray[i * 5 + j].setStyleSheet("""
+        #         #     background-color: yellow;
+        #         #     font: bold 40px;
+        #         #     """)
 
 
 
-        spacerItem = QSpacerItem(100, 100, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem)
+        # spacerItem = QSpacerItem(100, 100, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        # self.gridLayout.addItem(spacerItem)
 
 
         # btn = QPushButton(self.leftFrame)
@@ -100,8 +108,25 @@ class MyWindow(QWidget):
         self.bt1.clicked.connect(self.button_clicked)
         self.gridLayout.addWidget(self.bt1, 3, 1)
 
+        self.spacerItem = QSpacerItem(200, 200, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.gridLayout.addItem(self.spacerItem)
+
+
         self.verticalLayoutR.addLayout(self.gridLayout)
+
+        self.lb4 = QLabel()
+        self.lb4.setText("20190102")
+        self.lb4.setStyleSheet("""
+            font: 50px;
+            font-family: 새굴림;
+            """)
+        self.lb4.setAlignment(Qt.AlignCenter)
+        self.verticalLayoutR.addWidget(self.lb4)
+        # self.verticalLayoutR.setAlignment(Qt.AlignCenter)
+
         self.principalLayout.addLayout(self.verticalLayoutR)
+
+
 
     def button_clicked(self):
 
