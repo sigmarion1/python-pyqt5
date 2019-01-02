@@ -11,8 +11,8 @@ class MyWindow(QWidget):
 
         self.setWindowTitle("GUI Test")
 
-        self.setGeometry(800, 200, 800, 500)
-        # self.setFixedSize(500, 300)
+        self.setGeometry(800, 200, 1000, 800)
+        # self.setFixedSize(1000, 800)
 
         self.principalLayout = QHBoxLayout(self)
 
@@ -21,19 +21,24 @@ class MyWindow(QWidget):
         self.leftFrame.setObjectName("lf")
         self.leftFrame.setStyleSheet("""
             QFrame#lf{
-            background-image: url(./logobig.png);
+            background-image: url(./classroom.png);
             }
         """)
 
         self.verticalLayoutL = QVBoxLayout(self.leftFrame)
         self.gridLayout = QGridLayout()
 
+        self.gridLayout.setColumnStretch(0, 2)
+        self.gridLayout.setColumnStretch(6, 2)
 
-        self.gridLayout.setColumnStretch(0,1)
-        self.gridLayout.setColumnStretch(6,1)
+        self.gridLayout.setRowStretch(0,20)
+        self.gridLayout.setRowStretch(7,2)
 
-        self.gridLayout.setRowStretch(0,1)
-        self.gridLayout.setRowStretch(7,1)
+        # self.gridLayout.setColumnStretch(0,1)
+        # self.gridLayout.setColumnStretch(6,1)
+        #
+        # self.gridLayout.setRowStretch(0,1)
+        # self.gridLayout.setRowStretch(7,1)
 
 
         self.lbArray = list()
@@ -44,9 +49,9 @@ class MyWindow(QWidget):
                 self.lbArray.append(self.lb)
                 self.lb.setText(str(i*5 + j))
                 self.lb.setStyleSheet("""
-                    background-color: skyblue;
+                    background-color: blue;
                     color: white;
-                    font : 50px;
+                    font : 70px;
                     text-align: center;
                     border: 3px solid green;
                 """)
@@ -99,7 +104,7 @@ class MyWindow(QWidget):
         self.lb3.setText("3번 입력")
         self.gridLayout.addWidget(self.lb3, 2, 0)
 
-        self.le = QLineEdit()
+        self.le = QTextEdit()
         self.gridLayout.addWidget(self.le, 2, 1)
 
 
@@ -108,16 +113,15 @@ class MyWindow(QWidget):
         self.bt1.clicked.connect(self.button_clicked)
         self.gridLayout.addWidget(self.bt1, 3, 1)
 
-        self.spacerItem = QSpacerItem(200, 200, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.spacerItem = QSpacerItem(50, 50, QSizePolicy.Fixed, QSizePolicy.Fixed)
         self.gridLayout.addItem(self.spacerItem)
-
 
         self.verticalLayoutR.addLayout(self.gridLayout)
 
         self.lb4 = QLabel()
         self.lb4.setText("20190102")
         self.lb4.setStyleSheet("""
-            font: 50px;
+            font: 10px;
             font-family: 새굴림;
             """)
         self.lb4.setAlignment(Qt.AlignCenter)
