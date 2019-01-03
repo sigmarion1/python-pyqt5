@@ -21,12 +21,14 @@ class MyWindow(QWidget):
         self.leftFrame.setObjectName("lf")
         self.leftFrame.setStyleSheet("""
             QFrame#lf{
-            background-image: url(./classroom.png);
+            background-image: url(./logobig.png);
             }
         """)
 
         self.verticalLayoutL = QVBoxLayout(self.leftFrame)
         self.gridLayout = QGridLayout()
+
+        self.gridLayout.setSpacing(20)
 
         self.gridLayout.setColumnStretch(0, 2)
         self.gridLayout.setColumnStretch(6, 2)
@@ -81,32 +83,44 @@ class MyWindow(QWidget):
         # self.gridLayout.addWidget(btn, 2, 2)
 
         self.verticalLayoutL.addLayout(self.gridLayout)
+        self.verticalLayoutL.setSpacing(10)
+
         self.principalLayout.addWidget(self.leftFrame)
 
         self.verticalLayoutR = QVBoxLayout()
         self.gridLayout = QGridLayout()
+        self.gridLayout.setSpacing(10)
 
         self.lb1 = QLabel()
         self.lb1.setText("1번 입력")
         self.gridLayout.addWidget(self.lb1, 0, 0)
 
-        self.le = QLineEdit()
-        self.gridLayout.addWidget(self.le, 0, 1)
+        self.sp1 = QSpinBox()
+        self.gridLayout.addWidget(self.sp1, 0, 1)
+        self.sp1.setValue(10)
+        self.sp1.setSingleStep(1)
+        self.sp1.setMinimum(0)
+        self.sp1.setMaximum(100)
+
+
 
         self.lb2 = QLabel()
         self.lb2.setText("2번 입력")
         self.gridLayout.addWidget(self.lb2, 1, 0)
 
-        self.le = QLineEdit()
-        self.gridLayout.addWidget(self.le, 1, 1)
+        self.sp2 = QSpinBox()
+        self.gridLayout.addWidget(self.sp2, 1, 1)
+        self.sp2.setValue(10)
+        self.sp2.setSingleStep(1)
+        self.sp2.setMinimum(0)
+        self.sp2.setMaximum(100)
 
         self.lb3 = QLabel()
         self.lb3.setText("3번 입력")
         self.gridLayout.addWidget(self.lb3, 2, 0)
 
-        self.le = QTextEdit()
+        self.le = QLineEdit()
         self.gridLayout.addWidget(self.le, 2, 1)
-
 
         self.bt1 = QPushButton()
         self.bt1.setText("변경")
@@ -129,6 +143,7 @@ class MyWindow(QWidget):
         # self.verticalLayoutR.setAlignment(Qt.AlignCenter)
 
         self.principalLayout.addLayout(self.verticalLayoutR)
+        self.principalLayout.setSpacing(10)
 
 
 
