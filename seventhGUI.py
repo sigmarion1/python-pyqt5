@@ -9,9 +9,10 @@ class MyWindow(QWidget):
     def __init__(self):
         super().__init__()
 
+
         self.setWindowTitle("GUI Test")
 
-        self.setGeometry(800, 200, 1000, 800)
+        self.setGeometry(800, 200, 900, 700)
         # self.setFixedSize(1000, 800)
 
         self.principalLayout = QHBoxLayout(self)
@@ -21,9 +22,10 @@ class MyWindow(QWidget):
         self.leftFrame.setObjectName("lf")
         self.leftFrame.setStyleSheet("""
             QFrame#lf{
-            background-image: url(./logobig.png);
+            background-image: url(./classroom.png);
             }
         """)
+        # self.leftFrame.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
         self.verticalLayoutL = QVBoxLayout(self.leftFrame)
         self.gridLayout = QGridLayout()
@@ -51,11 +53,13 @@ class MyWindow(QWidget):
                 self.lbArray.append(self.lb)
                 self.lb.setText(str(i*5 + j))
                 self.lb.setStyleSheet("""
-                    background-color: blue;
+                    background-color: rgba(100, 255, 255, 105);
                     color: white;
                     font : 70px;
                     text-align: center;
                     border: 3px solid green;
+                    border-radius: 10px;
+                    border-style: inset;
                 """)
 
                 self.gridLayout.addWidget(self.lb, i+1, j+1)
@@ -92,7 +96,7 @@ class MyWindow(QWidget):
         self.gridLayout.setSpacing(10)
 
         self.lb1 = QLabel()
-        self.lb1.setText("1번 입력")
+        self.lb1.setText("남학생")
         self.gridLayout.addWidget(self.lb1, 0, 0)
 
         self.sp1 = QSpinBox()
@@ -105,7 +109,7 @@ class MyWindow(QWidget):
 
 
         self.lb2 = QLabel()
-        self.lb2.setText("2번 입력")
+        self.lb2.setText("여학생")
         self.gridLayout.addWidget(self.lb2, 1, 0)
 
         self.sp2 = QSpinBox()
@@ -116,31 +120,41 @@ class MyWindow(QWidget):
         self.sp2.setMaximum(100)
 
         self.lb3 = QLabel()
-        self.lb3.setText("3번 입력")
+        self.lb3.setText("결번(/구분)")
         self.gridLayout.addWidget(self.lb3, 2, 0)
 
         self.le = QLineEdit()
         self.gridLayout.addWidget(self.le, 2, 1)
 
-        self.bt1 = QPushButton()
-        self.bt1.setText("변경")
-        self.bt1.clicked.connect(self.button_clicked)
-        self.gridLayout.addWidget(self.bt1, 3, 1)
+        # self.bt1 = QPushButton()
+        # self.bt1.setText("변경")
+        # self.bt1.clicked.connect(self.button_clicked)
+        # self.gridLayout.addWidget(self.bt1, 3, 1)
 
-        self.spacerItem = QSpacerItem(50, 50, QSizePolicy.Fixed, QSizePolicy.Fixed)
-        self.gridLayout.addItem(self.spacerItem)
+        # self.spacerItem = QSpacerItem(50, 50, QSizePolicy.Fixed, QSizePolicy.Fixed)
+        # self.gridLayout.addItem(self.spacerItem)
 
         self.verticalLayoutR.addLayout(self.gridLayout)
 
-        self.lb4 = QLabel()
-        self.lb4.setText("20190102")
-        self.lb4.setStyleSheet("""
-            font: 10px;
-            font-family: 새굴림;
-            """)
-        self.lb4.setAlignment(Qt.AlignCenter)
-        self.verticalLayoutR.addWidget(self.lb4)
-        # self.verticalLayoutR.setAlignment(Qt.AlignCenter)
+        self.bt1 = QPushButton()
+        self.bt1.setText("자리배치")
+        self.bt1.clicked.connect(self.button_clicked)
+        self.verticalLayoutR.addWidget(self.bt1)
+
+
+        self.spacerItem = QSpacerItem(100 , 700, QSizePolicy.Fixed, QSizePolicy.Fixed)
+        self.verticalLayoutR.addSpacerItem(self.spacerItem)
+
+
+        # self.lb4 = QLabel()
+        # self.lb4.setText("20190102")
+        # self.lb4.setStyleSheet("""
+        #     font: 10px;
+        #     font-family: 새굴림;
+        #     """)
+        # self.lb4.setAlignment(Qt.AlignCenter)
+        # self.verticalLayoutR.addWidget(self.lb4)
+        # # self.verticalLayoutR.setAlignment(Qt.AlignCenter)
 
         self.principalLayout.addLayout(self.verticalLayoutR)
         self.principalLayout.setSpacing(10)
